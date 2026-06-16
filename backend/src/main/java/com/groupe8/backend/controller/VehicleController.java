@@ -2,6 +2,7 @@ package com.groupe8.backend.controller;
 
 import com.groupe8.backend.entity.Vehicle;
 import com.groupe8.backend.service.VehicleService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,12 +30,12 @@ public class VehicleController {
     }
 
     @PostMapping
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
+    public Vehicle createVehicle(@Valid @RequestBody Vehicle vehicle) {
         return vehicleService.saveVehicle(vehicle);
     }
 
     @PutMapping("/{id}")
-    public Vehicle updateVehicle(@PathVariable Long id,
+    public Vehicle updateVehicle(@PathVariable Long id, @Valid
                                  @RequestBody Vehicle vehicle) {
 
         vehicle.setId(id);
